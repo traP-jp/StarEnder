@@ -39,10 +39,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void Toujou()
     {
-        transform.DOLocalMove(new Vector3(0, -5f, 0), 1f);
+        transform.DOLocalMove(new Vector3(-225f, -561f, 0), 1f);
     }
     public void Taijou()
     {
-        transform.DOLocalMove(new Vector3(0, 350f, 0), 1f);
+        transform.DOLocalMove(new Vector3(-225f, 0, 0), 1f);
     }
 }
