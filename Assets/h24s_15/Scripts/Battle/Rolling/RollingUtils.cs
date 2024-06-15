@@ -69,10 +69,10 @@ namespace h24s_15.Battle.Rolling {
         }
 
         public static bool ExistsSStraight(RollEye[] eyes) {
-            return (eyes[0] is RollEye.One && eyes[1] == RollEye.Two && eyes[2] == RollEye.Three &&
-                    eyes[3] == RollEye.Four) ||
-                   (eyes[1] == RollEye.Two && eyes[2] == RollEye.Three && eyes[3] == RollEye.Four &&
-                    eyes[4] == RollEye.Five);
+            return (eyes[0] is RollEye.One && eyes[1] is RollEye.Two && eyes[2] is RollEye.Three &&
+                    eyes[3] is RollEye.Four) ||
+                   (eyes[1] is RollEye.Two && eyes[2] is RollEye.Three && eyes[3] is RollEye.Four &&
+                    eyes[4] is RollEye.Five);
         }
 
         public static bool ExistsBStraight(RollEye[] eyes) {
