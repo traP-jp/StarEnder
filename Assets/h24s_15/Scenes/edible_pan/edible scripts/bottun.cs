@@ -1,34 +1,34 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ClickToDisappearAndReappear : MonoBehaviour
-{
-    private bool isClicked = false; // クリックされたかどうかのフラグ
-    private Renderer objectRenderer; // オブジェクトのレンダラー
-    private float disappearTime = 0.5f; // オブジェクトが消える時間（秒）
+namespace h24s_15.Scenes.edible_pan.edible_scripts {
+    public class ClickToDisappearAndReappear : MonoBehaviour {
+        private bool isClicked = false; // クリックされたかどうかのフラグ
+        private Renderer objectRenderer; // オブジェクトのレンダラー
+        private float disappearTime = 0.5f; // オブジェクトが消える時間（秒）
 
-    void Start()
-    {
-        objectRenderer = GetComponent<Renderer>(); // オブジェクトのレンダラーを取得する
-    }
+        [SerializeField] private UnityEvent onDisappear; // オブジェクトが消えたときに呼び出すイベント
 
-    void Update()
-    {
-        // クリックされたらオブジェクトを非表示にする
-        if (isClicked)
-        {
-            objectRenderer.enabled = false; // オブジェクトを非表示にする
-            Invoke("ReappearObject", disappearTime); // disappearTime 秒後にオブジェクトを再表示する
-            isClicked = false; // フラグをリセットする
+        private void Start() {
+            objectRenderer = GetComponent<Renderer>(); // オブジェクトのレンダラーを取得する
         }
-    }
 
-    void OnMouseDown()
-    {
-        isClicked = true; // クリックされたらフラグを立てる
-    }
+        private void Update() {
+            // クリックされたらオブジェクトを非表示にする
+            if (isClicked) {
+                objectRenderer.enabled = false; // オブジェクトを非表示にする
+                Invoke(nameof(ReappearObject), disappearTime); // disappearTime 秒後にオブジェクトを再表示する
+                isClicked = false; // フラグをリセットする
+            }
+        }
 
-    void ReappearObject()
-    {
-        objectRenderer.enabled = true; // オブジェクトを再表示する
+        private void OnMouseDown() {
+            isClicked = true; // クリックされたらフラグを立てる
+            onDisappear.Invoke(); // オブジェクトが消えたときに呼び出すイベントを実行する
+        }
+
+        private void ReappearObject() {
+            objectRenderer.enabled = true; // オブジェクトを再表示する
+        }
     }
 }

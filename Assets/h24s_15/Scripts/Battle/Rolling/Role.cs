@@ -1,4 +1,8 @@
-﻿namespace h24s_15.Battle.Rolling {
+﻿using Cysharp.Threading.Tasks;
+using h24s_15.Utils;
+using UnityEngine;
+
+namespace h24s_15.Battle.Rolling {
     public enum Role {
         NoPair = 0,
         OnePair,
@@ -13,6 +17,56 @@
     }
 
     public static class RoleExtension {
+        private static Sprite _noPairSprite;
+        private static Sprite _onePairSprite;
+        private static Sprite _twoPairSprite;
+        private static Sprite _threeDiceSprite;
+        private static Sprite _fullHouseSprite;
+        private static Sprite _sStraightSprite;
+        private static Sprite _bStraightSprite;
+        private static Sprite _fourDiceSprite;
+        private static Sprite _fiveDiceSprite;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void LoadSprites() {
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicons_nopair", obj => _noPairSprite = obj)
+                .Forget();
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_1pair", obj => _onePairSprite = obj)
+                .Forget();
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_2pair", obj => _twoPairSprite = obj)
+                .Forget();
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_3pair", obj => _threeDiceSprite = obj)
+                .Forget();
+            ResourcesUtility
+                .LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_fullhouse", obj => _fullHouseSprite = obj)
+                .Forget();
+            ResourcesUtility
+                .LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicons_vstraight", obj => _sStraightSprite = obj)
+                .Forget();
+            ResourcesUtility
+                .LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_bstraight", obj => _bStraightSprite = obj)
+                .Forget();
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_4pair", obj => _fourDiceSprite = obj)
+                .Forget();
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicons_yotto", obj => _fiveDiceSprite = obj)
+                .Forget();
+        }
+
+        public static Sprite ToSprite(this Role role) {
+            return role switch {
+                Role.NoPair => _noPairSprite,
+                Role.OnePair => _onePairSprite,
+                Role.TwoPair => _twoPairSprite,
+                Role.ThreeDice => _threeDiceSprite,
+                Role.FullHouse => _fullHouseSprite,
+                Role.SStraight => _sStraightSprite,
+                Role.BStraight => _bStraightSprite,
+                Role.FourDice => _fourDiceSprite,
+                Role.FiveDice => _fiveDiceSprite,
+                _ => throw new System.ArgumentOutOfRangeException(nameof(role), role, null)
+            };
+        }
+
         public static string ToJapaneseText(this Role role) {
             return role switch {
                 Role.NoPair => "ノーペア",
@@ -26,6 +80,11 @@
                 Role.FiveDice => "ファイブカード",
                 _ => throw new System.ArgumentOutOfRangeException(nameof(role), role, null)
             };
+        }
+
+        public static int MultiplyValue(this Role role, int originalValue, RoleMultipliers multipliers) {
+            var multiplier = multipliers.GetMultiplier(role);
+            return originalValue * multiplier;
         }
     }
 }

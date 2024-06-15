@@ -69,6 +69,7 @@ namespace h24s_15.Battle.Rolling {
         /// </summary>
         /// <returns></returns>
         public RollEye Roll() {
+            _aliasMethod.Constructor(_probWeights);
             var rolledIndex = _aliasMethod.Roll();
             return (RollEye)(rolledIndex + 1);
         }
