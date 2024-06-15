@@ -20,4 +20,13 @@ public class afterbutton : MonoBehaviour
         }
         
     }
+
+    public void upmove(GameObject obj)
+    {
+        obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,1000));
+    }
+    public void downmove(GameObject obj)
+    {
+        obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,-1000));
+    }
 }

@@ -9,6 +9,7 @@ public class button1 : MonoBehaviour
     void Start()
     {
         NextKanri = GameObject.Find ("NextKanri").GetComponent<afterbutton>();
+
     }
 
     // Update is called once per frame
@@ -19,7 +20,21 @@ public class button1 : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("一個目（左のやつ）が押されたよ");  // ログを出力
-        NextKanri.buttonF = 1;
+        if (NextKanri.buttonF == 0)
+        {
+            Debug.Log("一個目（左のやつ）が押されたよ");  // ログを出力
+            NextKanri.buttonF = 1;
+            NextKanri.downmove(GameObject.Find ("Button2"));
+            NextKanri.downmove(GameObject.Find ("Button3"));
+        }
+    }
+
+    public void OnMouseOver()
+    {
+        gameObject.transform.localScale = Vector3.one * 1.1f;
+    }
+    public void OnMouseExit()
+    {
+        gameObject.transform.localScale = Vector3.one;
     }
 }

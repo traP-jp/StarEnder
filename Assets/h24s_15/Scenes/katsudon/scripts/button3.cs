@@ -5,6 +5,7 @@ using UnityEngine;
 public class button3 : MonoBehaviour
 {
     private afterbutton NextKanri;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,21 @@ public class button3 : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("３個目（右のやつ）が押されたよ");  // ログを出力
-        NextKanri.buttonF = 3;
+        if (NextKanri.buttonF == 0)
+        {
+            Debug.Log("３個目（右のやつ）が押されたよ");  // ログを出力
+            NextKanri.buttonF = 3;
+            NextKanri.downmove(GameObject.Find ("Button1"));
+            NextKanri.downmove(GameObject.Find ("Button2"));
+        }
+    }
+
+    public void OnMouseOver()
+    {
+        gameObject.transform.localScale = Vector3.one * 1.1f;
+    }
+    public void OnMouseExit()
+    {
+        gameObject.transform.localScale = Vector3.one;
     }
 }
