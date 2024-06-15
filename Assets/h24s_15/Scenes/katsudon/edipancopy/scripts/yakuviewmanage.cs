@@ -7,12 +7,14 @@ using Unity.VisualScripting;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    private Animator m_Animator = null;
     private bool btnF;
     public GameObject dark;
     // Start is called before the first frame update
     void Start()
     {
         dark.gameObject.SetActive(false);
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,10 +41,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void Toujou()
     {
-        transform.DOLocalMove(new Vector3(-225f, -561f, 0), 1f);
+        //transform.DOLocalMove(new Vector3(-225f, -561f, 0), 1f);
+        m_Animator.SetBool("flag", true);
     }
     public void Taijou()
     {
-        transform.DOLocalMove(new Vector3(-225f, 0, 0), 1f);
+        //transform.DOLocalMove(new Vector3(-225f, 0, 0), 1f);
+        m_Animator.SetBool("flag", false);
     }
 }
