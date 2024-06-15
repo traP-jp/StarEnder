@@ -5,6 +5,7 @@ using UnityEngine;
 public class button3 : MonoBehaviour
 {
     private afterbutton NextKanri;
+    private bool supagethiF;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,10 @@ public class button3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (supagethiF)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,new Vector2(0,+0), 3);
+        }
     }
 
     public void OnClick()
@@ -26,12 +30,27 @@ public class button3 : MonoBehaviour
             NextKanri.buttonF = 3;
             NextKanri.downmove(GameObject.Find ("Button1"));
             NextKanri.downmove(GameObject.Find ("Button2"));
+            gameObject.transform.localScale = Vector3.one;
+            Invoke(nameof(MigiMove), 1.0f);
+
+            Invoke(nameof(Checkappear1),1.5f);
         }
+    }
+
+    public void Checkappear1()
+    {
+        Debug.Log("kdsdjfoasjfadslfj");
+        NextKanri.Checkappear();
+    }
+
+    public void MigiMove()
+    {
+        supagethiF = true;
     }
 
     public void OnMouseOver()
     {
-        gameObject.transform.localScale = Vector3.one * 1.1f;
+        if (NextKanri.buttonF == 0) gameObject.transform.localScale = Vector3.one * 1.1f;
     }
     public void OnMouseExit()
     {
