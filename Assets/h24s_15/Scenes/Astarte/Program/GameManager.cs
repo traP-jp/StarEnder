@@ -58,35 +58,13 @@ public class GameManager : MonoBehaviour
 
     public void ClickAgain()
     {
-         foreach (Transform child in canvas1.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas2.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas3.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas4.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas5.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas6.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        foreach (Transform child in canvas7.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-
+        canvas1.gameObject.SetActive(false);
+        canvas2.gameObject.SetActive(false);
+        canvas3.gameObject.SetActive(false);
+        canvas4.gameObject.SetActive(false);
+        canvas5.gameObject.SetActive(false);
+        canvas6.gameObject.SetActive(false);
+        canvas7.gameObject.SetActive(false);
         background.gameObject.SetActive(false);
     }
     
