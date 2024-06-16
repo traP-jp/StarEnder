@@ -1,5 +1,234 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2800394507696501481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3829598566535915988}
+  - component: {fileID: 8058497408388242587}
+  - component: {fileID: 7233948560315419122}
+  - component: {fileID: 6839152031899774332}
+  - component: {fileID: 9068558354370747707}
+  - component: {fileID: 4302065000812131924}
+  - component: {fileID: 2056396387187727793}
+  m_Layer: 0
+  m_Name: Buffs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3829598566535915988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6742938448632421627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8058497408388242587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 1
+    DiffTwoProbWeight: 0
+    DiffThreeProbWeight: 0
+    DiffFourProbWeight: 0
+    DiffFiveProbWeight: 0
+    DiffSixProbWeight: 0
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
+--- !u!114 &7233948560315419122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 0
+    DiffTwoProbWeight: 1
+    DiffThreeProbWeight: 0
+    DiffFourProbWeight: 0
+    DiffFiveProbWeight: 0
+    DiffSixProbWeight: 0
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
+--- !u!114 &6839152031899774332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 0
+    DiffTwoProbWeight: 0
+    DiffThreeProbWeight: 1
+    DiffFourProbWeight: 0
+    DiffFiveProbWeight: 0
+    DiffSixProbWeight: 0
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
+--- !u!114 &9068558354370747707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 0
+    DiffTwoProbWeight: 0
+    DiffThreeProbWeight: 0
+    DiffFourProbWeight: 1
+    DiffFiveProbWeight: 0
+    DiffSixProbWeight: 0
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
+--- !u!114 &4302065000812131924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 0
+    DiffTwoProbWeight: 0
+    DiffThreeProbWeight: 0
+    DiffFourProbWeight: 0
+    DiffFiveProbWeight: 1
+    DiffSixProbWeight: 0
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
+--- !u!114 &2056396387187727793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800394507696501481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda67dfd6ef488b8baed15aa001f333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _probWeight: 0
+  _buffType: 0
+  _diffProbWeights:
+    DiffOneProbWeight: 0
+    DiffTwoProbWeight: 0
+    DiffThreeProbWeight: 0
+    DiffFourProbWeight: 0
+    DiffFiveProbWeight: 0
+    DiffSixProbWeight: 1
+  _diffRoleMultipliers:
+    DiffNoPairMultiplier: 0
+    DiffOnePairMultiplier: 0
+    DiffTwoPairMultiplier: 0
+    DiffThreeDiceMultiplier: 0
+    DiffFullHouseMultiplier: 0
+    DiffSStraightMultiplier: 0
+    DiffBStraightMultiplier: 0
+    DiffFourDiceMultiplier: 0
+    DiffFiveDiceMultiplier: 0
+  _healValue: 0
 --- !u!1 &8402400264031413193
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +240,8 @@ GameObject:
   - component: {fileID: 6742938448632421627}
   - component: {fileID: 3724031202690512114}
   - component: {fileID: 988945551215583141}
+  - component: {fileID: 2643264068944193580}
+  - component: {fileID: 1391563729904899341}
   m_Layer: 0
   m_Name: BattleSystems
   m_TagString: Untagged
@@ -30,7 +261,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3829598566535915988}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3724031202690512114
@@ -46,6 +278,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontDestroy: 0
+  _data:
+    _reRollOrSubmitTicketMaxCount: 4
+    DiceHistory: {fileID: 988945551215583141}
+  _overlayImage: {fileID: 0}
+  _remainingTicketText: {fileID: 0}
 --- !u!114 &988945551215583141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,5 +296,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontDestroy: 0
-  _unitPrefab: {fileID: 0}
+  _unitPrefab: {fileID: 2254101717304775440, guid: 70c3814308bb03e45ade2cf08893d487, type: 3}
   _contentParent: {fileID: 0}
+--- !u!114 &2643264068944193580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402400264031413193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafcb7e6b2fd44ddada93f7259cd3ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestroy: 0
+  _rollEyeActionDataList:
+  - _singleAttackValue: 1
+    _singleShieldValue: 0
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+  - _singleAttackValue: 2
+    _singleShieldValue: 0
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+  - _singleAttackValue: 3
+    _singleShieldValue: 0
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+  - _singleAttackValue: 0
+    _singleShieldValue: 2
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+  - _singleAttackValue: 0
+    _singleShieldValue: 4
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+  - _singleAttackValue: 0
+    _singleShieldValue: 3
+    _consecutiveAttackValue: 0
+    _consecutiveAttackTurns: 0
+    _consecutiveShieldValue: 0
+    _consecutiveShieldTurns: 0
+    _singleSpecialEffect: 0
+--- !u!114 &1391563729904899341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402400264031413193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a132b7db614c59a3fa475776f7cda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestroy: 0
+  _buffCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _diceSetManager: {fileID: 0}
+  _overLayImage: {fileID: 0}

@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3824128543231367077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.558197, y: -0.20601052, z: -0.044624284}
-  m_LocalScale: {x: 1.4922949, y: 1.6645, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6466564818521254081}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a562f4b315327b447b9b05db7cda4bdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 5678500098623589224}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.468197, y: 1.9939895, z: -0.044624284}
-  m_LocalScale: {x: 1.5907, y: 0.5078, z: 1}
+  m_LocalPosition: {x: -8, y: 18.1, z: -0.044624284}
+  m_LocalScale: {x: 50, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6466564818521254081}
@@ -214,3 +214,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a0a214c185a435299eb8b21f330b5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionWithWeights:
+  - _actionData:
+      _singleAttackValue: 5
+      _singleShieldValue: 0
+      _consecutiveAttackValue: 0
+      _consecutiveAttackTurns: 0
+      _consecutiveShieldValue: 0
+      _consecutiveShieldTurns: 0
+      _singleSpecialEffect: 0
+    _weight: 1
+  - _actionData:
+      _singleAttackValue: 0
+      _singleShieldValue: 5
+      _consecutiveAttackValue: 0
+      _consecutiveAttackTurns: 0
+      _consecutiveShieldValue: 0
+      _consecutiveShieldTurns: 0
+      _singleSpecialEffect: 0
+    _weight: 1
+  - _actionData:
+      _singleAttackValue: 10
+      _singleShieldValue: 0
+      _consecutiveAttackValue: 0
+      _consecutiveAttackTurns: 0
+      _consecutiveShieldValue: 0
+      _consecutiveShieldTurns: 0
+      _singleSpecialEffect: 0
+    _weight: 1
+  _spriteRenderer: {fileID: 6758432609657631557}
+  _initialHp: 40

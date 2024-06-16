@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using h24s_15.Buff;
 using h24s_15.Utils;
 using UnityEngine;
 
@@ -72,6 +73,12 @@ namespace h24s_15.Battle.Rolling {
             _aliasMethod.Constructor(_probWeights);
             var rolledIndex = _aliasMethod.Roll();
             return (RollEye)(rolledIndex + 1);
+        }
+
+        public void ApplyDiff(DiffProbWeights diffProbWeights) {
+            for (var i = 0; i < 6; i++) {
+                _probWeights[i] += diffProbWeights.GetDiffProbWeight((RollEye)(i + 1));
+            }
         }
     }
 }

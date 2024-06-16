@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 914074558552838845}
   - component: {fileID: 6813874568172502901}
   - component: {fileID: 5124086556577849058}
+  - component: {fileID: 3327837994049273233}
   m_Layer: 5
   m_Name: Dice
   m_TagString: Untagged
@@ -134,8 +135,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaeff7c6a59b4bd1bead66f2f8962f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rollingDurationSeconds: 1
+  _diceImage: {fileID: 5412192555550179022}
+  _diceCaseImage: {fileID: 6315144823172820548}
+  _animator: {fileID: 2247619958430846964}
+  _rollEyeSelectorUnit: {fileID: 3327837994049273233}
+  _rollingDurationSeconds: 0.4
   _animationSpeed: 1
+--- !u!114 &3327837994049273233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153411116321787256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e2e75177a64259897004a9ed3292b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _diceFrameImage: {fileID: 6315144823172820548}
+  _dice: {fileID: 5124086556577849058}
+  IsEnabled: 0
 --- !u!1 &4934918016336695128
 GameObject:
   m_ObjectHideFlags: 0

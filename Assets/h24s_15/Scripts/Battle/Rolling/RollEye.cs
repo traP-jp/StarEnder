@@ -86,5 +86,29 @@ namespace h24s_15.Battle.Rolling {
 
             return sprite;
         }
+
+        public static string ToText(this RollEye eye) {
+            return eye switch {
+                RollEye.One => "1",
+                RollEye.Two => "2",
+                RollEye.Three => "3",
+                RollEye.Four => "4",
+                RollEye.Five => "5",
+                RollEye.Six => "6",
+                _ => null
+            };
+        }
+
+        public static string ToFullText(this RollEye eye) {
+            return eye switch {
+                RollEye.One => "１",
+                RollEye.Two => "２",
+                RollEye.Three => "３",
+                RollEye.Four => "４",
+                RollEye.Five => "５",
+                RollEye.Six => "６",
+                _ => null
+            };
+        }
     }
 }
