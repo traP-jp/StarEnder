@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class rollspeeds : MonoBehaviour
+public class anim_speed : MonoBehaviour
 {
     public Animator animator;
     public float animationSpeed = 1.0f; // アニメーションの速度
