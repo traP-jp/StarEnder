@@ -5,12 +5,15 @@ using UnityEngine;
 public class zikkouyou : MonoBehaviour
 {
     AttackScript attackscript;
+    DamageScript damagescript;
     // Start is called before the first frame update
-    void Start()
+    public void OnClick()
     {
         attackscript = GetComponent<AttackScript>();
+        damagescript = GetComponent<DamageScript>();
 
-        attackscript.Attackanim();
+        //attackscript.Attackanim();
+        damagescript.Damageanim();
     }
 
     // Update is called once per frame
