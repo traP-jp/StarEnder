@@ -17,19 +17,13 @@ namespace h24s_15.Battle.Rolling {
 
         public void DisableUnits() {
             foreach (var unit in _rollEyeSelectorUnits) {
-                unit.enabled = false;
+                unit.IsEnabled = false;
             }
         }
 
         public void EnableUnits() {
             foreach (var unit in _rollEyeSelectorUnits) {
-                unit.enabled = true;
-            }
-        }
-
-        public void SetRollEyes(RollEye[] rollEyes) {
-            for (var i = 0; i < _rollEyeSelectorUnits.Count; i++) {
-                _rollEyeSelectorUnits[i].RollEye = rollEyes[i];
+                unit.IsEnabled = true;
             }
         }
 
@@ -53,7 +47,12 @@ namespace h24s_15.Battle.Rolling {
 
             Debug.Log($"出目を選択し終わりました");
             ResetColors();
-            return (from unit in _rollEyeSelectorUnits where unit.IsSelected.CurrentValue select unit.RollEye).ToList();
+            var selectedEyes = (from unit in _rollEyeSelectorUnits
+                where unit.IsSelected.CurrentValue
+                select unit.Dice.CurrentUpRollEye).ToList();
+
+            Array.Sort(selectedEyes.ToArray());
+            return selectedEyes;
         }
 
         private int GetSelectedCount() {

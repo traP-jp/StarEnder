@@ -10,6 +10,7 @@ namespace h24s_15.Battle.Rolling {
         [SerializeField] private Image _diceImage;
         [SerializeField] private Image _diceCaseImage;
         [SerializeField] private Animator _animator;
+        [SerializeField] private RollEyeSelectorUnit _rollEyeSelectorUnit;
 
         [Header("パラメーター")]
         [Tooltip("サイコロ回しのアニメーションの持続秒数")] [SerializeField]
@@ -67,6 +68,10 @@ namespace h24s_15.Battle.Rolling {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
+            if (_rollEyeSelectorUnit.IsEnabled) {
+                return;
+            }
+
             _isLocked.Value = !_isLocked.Value;
         }
     }

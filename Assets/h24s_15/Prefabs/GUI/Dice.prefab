@@ -138,6 +138,7 @@ MonoBehaviour:
   _diceImage: {fileID: 5412192555550179022}
   _diceCaseImage: {fileID: 6315144823172820548}
   _animator: {fileID: 2247619958430846964}
+  _rollEyeSelectorUnit: {fileID: 3327837994049273233}
   _rollingDurationSeconds: 0.4
   _animationSpeed: 1
 --- !u!114 &3327837994049273233
@@ -153,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _diceFrameImage: {fileID: 6315144823172820548}
-  RollEye: 0
+  _dice: {fileID: 5124086556577849058}
+  IsEnabled: 0
 --- !u!1 &4934918016336695128
 GameObject:
   m_ObjectHideFlags: 0

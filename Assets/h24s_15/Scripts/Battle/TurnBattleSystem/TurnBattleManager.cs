@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using h24s_15.Battle.Rolling;
 using h24s_15.Buff;
 using h24s_15.Utils;
 using h24s_15.Utils.Extensions;
@@ -64,10 +65,9 @@ namespace h24s_15.Battle.TurnBattleSystem {
             _data.ElapsedTurnCount.Value++;
 
             Debug.Log($"次のターンが始まりました");
-
             _isTurnEnding = false;
-
             _data.RemainingOperateCount.Value = _data.ReRollOrSubmitTicketMaxCount;
+            DiceSetManager.Instance.RollAll();
         }
 
         public async void OnDefeatEnemy() {

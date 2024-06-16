@@ -40,7 +40,10 @@ namespace h24s_15.Buff {
             _overLayImage.enabled = true;
             _overLayImage
                 .DOFade(1f, 1f)
-                .OnComplete(() => { SceneManager.LoadScene("StageSelect"); })
+                .OnComplete(() => {
+                    Debug.Log($"戦闘シーン終了フェード終わり");
+                    SceneManager.LoadScene("StageSelect");
+                })
                 .SetLink(_overLayImage.gameObject);
         }
 
