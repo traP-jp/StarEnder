@@ -48,7 +48,7 @@ namespace h24s_15.Battle.Rolling {
                 .Forget();
             ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_4pair", obj => _fourDiceSprite = obj)
                 .Forget();
-            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicons_yotto", obj => _fiveDiceSprite = obj)
+            ResourcesUtility.LoadObjectAndAction<Sprite>("Sprites/Roles/yakuicon_yotto", obj => _fiveDiceSprite = obj)
                 .Forget();
         }
 
@@ -67,6 +67,14 @@ namespace h24s_15.Battle.Rolling {
             };
         }
 
+        public static bool IsMultipleEyeNecessary(this Role role) {
+            return role switch {
+                Role.SStraight => true,
+                Role.BStraight => true,
+                _ => false
+            };
+        }
+
         public static string ToJapaneseText(this Role role) {
             return role switch {
                 Role.NoPair => "ノーペア",
@@ -80,11 +88,6 @@ namespace h24s_15.Battle.Rolling {
                 Role.FiveDice => "ファイブカード",
                 _ => throw new System.ArgumentOutOfRangeException(nameof(role), role, null)
             };
-        }
-
-        public static int MultiplyValue(this Role role, int originalValue, RoleMultipliers multipliers) {
-            var multiplier = multipliers.GetMultiplier(role);
-            return originalValue * multiplier;
         }
     }
 }

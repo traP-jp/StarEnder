@@ -1,7 +1,10 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using h24s_15.Battle.Actions;
 using h24s_15.Battle.PlayerCharacter;
+using h24s_15.Battle.Rolling;
+using h24s_15.Battle.TurnBattleSystem;
 using R3;
 using UnityEngine;
 
@@ -19,8 +22,16 @@ namespace h24s_15.Battle.Enemy {
         public ReadOnlyReactiveProperty<IActionData> NextAction => _nextAction.ToReadOnlyReactiveProperty();
         public ReactiveProperty<IPlayerCharacter> NextActionTargetPlayerCharacter => _nextActionTargetPlayerCharacter;
 
+        private void Start() {
+            TurnBattleManager.Instance.Data.CurrentEnemies.Add(this);
+
+            _nextActionTargetPlayerCharacter.Value = FindObjectsByType<GameObject>(FindObjectsSortMode.None)
+                .First(obj => obj.GetComponent<IPlayerCharacter>() != null).GetComponent<IPlayerCharacter>();
+        }
+
         public async UniTask Act(CancellationToken token) {
-            await _nextActionTargetPlayerCharacter.Value.ReceiveAttack(_nextAction.Value, token);
+            await _nextActionTargetPlayerCharacter.Value.ReceiveAttack(
+                _nextAction.Value, token);
         }
 
         public async UniTask ReceiveAttack(IActionData actionData, CancellationToken token) {

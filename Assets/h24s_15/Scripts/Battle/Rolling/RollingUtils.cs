@@ -1,7 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace h24s_15.Battle.Rolling {
     public static class RollingUtils {
+        public static List<RollEye> ComputeHeadEyes(RollEye[] eyes) {
+            var headEyes = new List<RollEye>();
+
+            var role = EvaluateRole(eyes);
+            if (role.IsMultipleEyeNecessary() || role is Role.NoPair) {
+                return headEyes;
+            }
+
+            System.Array.Sort(eyes);
+
+            switch (role) {
+                case Role.OnePair:
+                    headEyes.Add(eyes[0]);
+                    break;
+                case Role.TwoPair:
+                    headEyes.Add(eyes[0]);
+                    headEyes.Add(eyes[2]);
+                    break;
+                case Role.ThreeDice:
+                    headEyes.Add(eyes[0]);
+                    break;
+                case Role.FullHouse:
+                    headEyes.Add(eyes[0]);
+                    headEyes.Add(eyes[3]);
+                    break;
+                case Role.FourDice:
+                    headEyes.Add(eyes[0]);
+                    break;
+                case Role.FiveDice:
+                    headEyes.Add(eyes[0]);
+                    break;
+            }
+
+            return headEyes;
+        }
+
         public static Role EvaluateRole(RollEye[] eyes) {
             var eyesLength = eyes.Length;
 
@@ -9,38 +46,37 @@ namespace h24s_15.Battle.Rolling {
                 throw new System.ArgumentException($"サイコロの数が{DiceSet.SET_SIZE}個ではありません。");
             }
 
-            var sortedEyes = (RollEye[])eyes.Clone();
-            System.Array.Sort(sortedEyes);
+            System.Array.Sort(eyes);
 
-            if (ExistsFiveDice(sortedEyes)) {
+            if (ExistsFiveDice(eyes)) {
                 return Role.FiveDice;
             }
 
-            if (ExistsFourDice(sortedEyes)) {
+            if (ExistsFourDice(eyes)) {
                 return Role.FourDice;
             }
 
-            if (ExistsBStraight(sortedEyes)) {
+            if (ExistsBStraight(eyes)) {
                 return Role.BStraight;
             }
 
-            if (ExistsSStraight(sortedEyes)) {
+            if (ExistsSStraight(eyes)) {
                 return Role.SStraight;
             }
 
-            if (ExistsFullHouse(sortedEyes)) {
+            if (ExistsFullHouse(eyes)) {
                 return Role.FullHouse;
             }
 
-            if (ExistsThreeDice(sortedEyes)) {
+            if (ExistsThreeDice(eyes)) {
                 return Role.ThreeDice;
             }
 
-            if (ExistsTwoPair(sortedEyes)) {
+            if (ExistsTwoPair(eyes)) {
                 return Role.TwoPair;
             }
 
-            if (ExistsOnePair(sortedEyes)) {
+            if (ExistsOnePair(eyes)) {
                 return Role.OnePair;
             }
 

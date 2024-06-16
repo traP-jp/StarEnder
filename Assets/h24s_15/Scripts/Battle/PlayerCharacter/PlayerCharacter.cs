@@ -1,7 +1,11 @@
-﻿using System.Threading;
+﻿using System;
+using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using h24s_15.Battle.Actions;
 using h24s_15.Battle.Enemy;
+using h24s_15.Battle.Rolling;
+using h24s_15.Battle.TurnBattleSystem;
 using R3;
 using UnityEngine;
 
@@ -19,7 +23,16 @@ namespace h24s_15.Battle.PlayerCharacter {
         public ReadOnlyReactiveProperty<IActionData> NextAction => _nextAction.ToReadOnlyReactiveProperty();
         public ReactiveProperty<IEnemy> NextActionTargetEnemy => _nextActionTargetEnemy;
 
+        private void Start() {
+            TurnBattleManager.Instance.Data.CurrentPlayerCharacter = this;
+
+            _nextActionTargetEnemy.Value = FindObjectsByType<GameObject>(FindObjectsSortMode.None)
+                .First(obj => obj.GetComponent<IEnemy>() != null).GetComponent<IEnemy>();
+        }
+
         public async UniTask Act(CancellationToken token) {
+            _nextAction.Value = RollResultToActionConverter.CompositeActionData(
+                DiceHistory.Instance.History.Select(x => x.ActionData).ToList());
             await _nextActionTargetEnemy.Value.ReceiveAttack(_nextAction.Value, token);
         }
 

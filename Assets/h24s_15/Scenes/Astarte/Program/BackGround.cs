@@ -18,7 +18,7 @@ public class BackGround : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 2){
         if(back2==1){
             background1.SetActive(true);
@@ -57,7 +57,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 3){
         if(back3==1){
             background1.SetActive(true);
@@ -74,7 +74,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 4){
         if(back4==1){
             background1.SetActive(true);
@@ -91,7 +91,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 5){
         if(back5==1){
             background1.SetActive(true);
@@ -108,7 +108,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 6){
         if(back6==1){
             background1.SetActive(true);
@@ -125,7 +125,7 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
         if(gameManager.progress == 7){
         if(back7==1){
             background1.SetActive(true);
@@ -142,6 +142,6 @@ public class BackGround : MonoBehaviour
             background1.SetActive(false);
             background2.SetActive(false);
         }
-        } 
+        }
     }
 }
