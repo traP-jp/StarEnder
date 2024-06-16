@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Anim_speed : MonoBehaviour
@@ -5,9 +6,7 @@ public class Anim_speed : MonoBehaviour
     public Animator animator;
     public float animationSpeed = 1.0f; // アニメーションの速度
 
-    void Update()
-    {
-        // アニメーターの速度を設定する
+    private void Awake() {
         animator.speed = animationSpeed;
     }
 }
