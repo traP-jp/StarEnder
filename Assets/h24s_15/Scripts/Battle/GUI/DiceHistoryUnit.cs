@@ -14,8 +14,8 @@ namespace h24s_15.Battle.GUI {
 
         [SerializeField] private List<Image> _contentDiceImages;
         [SerializeField] private Image _contentRoleImage;
-        [SerializeField] private Image _contentActionTypeImage;
-        [SerializeField] private TMP_Text _contentActionValueText;
+        [SerializeField] private List<Image> _contentActionTypeImage;
+        [SerializeField] private List<TMP_Text> _contentActionValueText;
 
         [Header("パラメーター")]
         [Tooltip("内容1と2の切り替え秒数")] [SerializeField] private float _switchContentSeconds = 1.0f;
@@ -25,19 +25,34 @@ namespace h24s_15.Battle.GUI {
         private void Awake() {
             _content1Parent.SetActive(true);
             _content2Parent.SetActive(false);
+
+            foreach (var image in _contentActionTypeImage) {
+                image.gameObject.SetActive(false);
+            }
+
+            foreach (var text in _contentActionValueText) {
+                text.gameObject.SetActive(false);
+            }
         }
 
         public void Initialize(DiceResultUnit resultUnit) {
             var sprites = resultUnit.SortedEyes.Select(eye => eye.ToHistorySprite()).ToArray();
-            for (var index = 0; index < 6; index++) {
+            for (var index = 0; index < DiceSet.SET_SIZE; index++) {
                 _contentDiceImages[index].sprite = sprites[index];
             }
 
             _contentRoleImage.sprite = resultUnit.Role.ToSprite();
-            _contentActionTypeImage.sprite = resultUnit.ActionData.GetActionTypes()[0].ToSprite();
+            var actionData = resultUnit.ActionData;
+            var actionTypes = actionData.GetActionTypes();
+            for (var i = 0; i < actionTypes.Count; i++) {
+                var thisActionData = actionTypes[i];
+                _contentActionTypeImage[i].sprite = thisActionData.ToSprite();
+                _contentActionTypeImage[i].gameObject.SetActive(true);
 
-            var actionValue = resultUnit.ActionData.GetActionValue(resultUnit.ActionData.GetActionTypes()[0]);
-            _contentActionValueText.text = actionValue is 0 ? "" : actionValue.ToString();
+                var actionValue = resultUnit.ActionData.GetActionValue(actionTypes[i]);
+                _contentActionValueText[i].text = actionValue is 0 ? "" : actionValue.ToString();
+                _contentActionValueText[i].gameObject.SetActive(true);
+            }
         }
 
         private void Update() {

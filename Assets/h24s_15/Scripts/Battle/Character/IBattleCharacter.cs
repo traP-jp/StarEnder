@@ -9,7 +9,7 @@ namespace h24s_15.Battle.Character {
         public ReadOnlyReactiveProperty<int> CurrentHp { get; }
         public ReadOnlyReactiveProperty<int> CurrentShield { get; }
         public ReadOnlyReactiveProperty<IActionData> NextAction { get; }
-        public UniTask Act(CancellationToken token);
-        public UniTask ReceiveAttack(IActionData actionData, CancellationToken token);
+        public UniTask<bool> Act(CancellationToken token);
+        public UniTask<bool> ReceiveAttack(IActionData actionData, CancellationToken token);
     }
 }

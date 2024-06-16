@@ -1,16 +1,17 @@
-﻿using h24s_15.Battle.Actions;
+﻿using System.Collections.Generic;
+using h24s_15.Battle.Actions;
 
 namespace h24s_15.Battle.Rolling {
     public readonly struct DiceResultUnit {
         public readonly RollEye[] SortedEyes;
         public readonly Role Role;
-        public readonly RollEye SelectedEye;
+        public readonly List<RollEye> HeadEyes;
         public readonly IActionData ActionData;
 
-        public DiceResultUnit(RollEye[] sortedEyes, Role role, RollEye selectedEye, IActionData actionData) {
+        public DiceResultUnit(RollEye[] sortedEyes, Role role, List<RollEye> headEyes, IActionData actionData) {
             SortedEyes = sortedEyes;
             Role = role;
-            SelectedEye = selectedEye;
+            HeadEyes = headEyes;
             ActionData = actionData;
         }
     }
