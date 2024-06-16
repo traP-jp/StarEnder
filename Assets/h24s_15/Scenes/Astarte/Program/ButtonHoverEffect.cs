@@ -4,7 +4,9 @@ using UnityEngine.EventSystems;
 public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Vector3 defaultScale;
-    public float hoverScaleMultiplier = 1.1f; // ホバー時の拡大倍率
+    public float hoverScaleMultiplier = 1.1f; // ホバー時の拡大倍//
+     public AudioManager audioManager;
+
 
     void Start()
     {
@@ -14,6 +16,11 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+         if (audioManager != null)
+        {
+            audioManager.PlaySE1();
+            Debug.Log("ボタンがクリックされました！");
+        }
         // マウスがボタンに入った時の処理
         transform.localScale = defaultScale * hoverScaleMultiplier;
     }

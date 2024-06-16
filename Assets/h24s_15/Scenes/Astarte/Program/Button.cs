@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class Botan : MonoBehaviour
 {
     public RearyBotan rearyBotan;
+     public AudioManager audioManager;
+
      public void OnClickButton()
     {
-        Debug.Log("ボタンがクリックされました！");
+         if (audioManager != null)
+        {
+            audioManager.PlaySE2();
+            Debug.Log("ボタンがクリックされました！");
+        }
+        
         // ここにクリックに対する反応の処理を記述する
         rearyBotan.gameObject.SetActive(true);
     }
