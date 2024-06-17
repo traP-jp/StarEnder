@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using h24s_15.Battle.Rolling;
 
-namespace h24s_15.Battle.Actions {
+namespace h24s_15.Battle.Rolling.Actions {
     public interface IActionData {
         public int SingleAttackValue { get; }
         public int SingleShieldValue { get; }

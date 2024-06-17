@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using h24s_15.Battle.Actions;
+using h24s_15.Battle.Rolling.Actions;
 
 namespace h24s_15.Battle.Rolling {
     public readonly struct DiceResultUnit {

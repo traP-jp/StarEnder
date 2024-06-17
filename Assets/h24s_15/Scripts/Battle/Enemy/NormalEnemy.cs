@@ -7,6 +7,7 @@ using DG.Tweening;
 using h24s_15.Battle.Actions;
 using h24s_15.Battle.PlayerCharacter;
 using h24s_15.Battle.Rolling;
+using h24s_15.Battle.Rolling.Actions;
 using h24s_15.Battle.TurnBattleSystem;
 using h24s_15.Utils;
 using R3;
@@ -20,7 +21,7 @@ namespace h24s_15.Battle.Enemy {
         [Header("パラメーター")]
         [Tooltip("最初のHP")] [SerializeField] private int _initialHp = 40;
 
-        private AliasMethod _actionGacha = new();
+        private readonly AliasMethod _actionGacha = new();
         private ReactiveProperty<int> _currentMaxHp;
         private ReactiveProperty<int> _currentHp;
         private ReactiveProperty<int> _currentShield = new();

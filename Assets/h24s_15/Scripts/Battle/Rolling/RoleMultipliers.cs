@@ -1,7 +1,9 @@
 ﻿using System;
+using UnityEngine;
 
 namespace h24s_15.Battle.Rolling {
-    public readonly struct RoleMultipliers {
+    [Serializable]
+    public struct RoleMultipliers {
         public static RoleMultipliers Default => new(
             1,
             2,
@@ -13,15 +15,15 @@ namespace h24s_15.Battle.Rolling {
             17,
             25);
 
-        private readonly int _noPairMultiplier;
-        private readonly int _onePairMultiplier;
-        private readonly int _twoPairMultiplier;
-        private readonly int _threeDiceMultiplier;
-        private readonly int _fullHouseMultiplier;
-        private readonly int _sStraightMultiplier;
-        private readonly int _bStraightMultiplier;
-        private readonly int _fourDiceMultiplier;
-        private readonly int _fiveDiceMultiplier;
+        [SerializeField] private int _noPairMultiplier;
+        [SerializeField] private int _onePairMultiplier;
+        [SerializeField] private int _twoPairMultiplier;
+        [SerializeField] private int _threeDiceMultiplier;
+        [SerializeField] private int _fullHouseMultiplier;
+        [SerializeField] private int _sStraightMultiplier;
+        [SerializeField] private int _bStraightMultiplier;
+        [SerializeField] private int _fourDiceMultiplier;
+        [SerializeField] private int _fiveDiceMultiplier;
 
         public RoleMultipliers(int noPairMultiplier, int onePairMultiplier, int twoPairMultiplier,
             int threeDiceMultiplier, int fullHouseMultiplier, int sStraightMultiplier, int bStraightMultiplier,

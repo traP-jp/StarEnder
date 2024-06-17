@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 988945551215583141}
   - component: {fileID: 2643264068944193580}
   - component: {fileID: 1391563729904899341}
+  - component: {fileID: 5858522461139951338}
   m_Layer: 0
   m_Name: BattleSystems
   m_TagString: Untagged
@@ -373,3 +374,26 @@ MonoBehaviour:
   - {fileID: 0}
   _diceSetManager: {fileID: 0}
   _overLayImage: {fileID: 0}
+--- !u!114 &5858522461139951338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402400264031413193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4538028f5251404baac3c447bfddf7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DontDestroy: 0
+  CurrentRoleMultipliers:
+    _noPairMultiplier: 1
+    _onePairMultiplier: 2
+    _twoPairMultiplier: 3
+    _threeDiceMultiplier: 4
+    _fullHouseMultiplier: 5
+    _sStraightMultiplier: 6
+    _bStraightMultiplier: 7
+    _fourDiceMultiplier: 8
+    _fiveDiceMultiplier: 9

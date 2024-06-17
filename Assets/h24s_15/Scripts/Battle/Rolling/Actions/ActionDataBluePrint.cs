@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace h24s_15.Battle.Actions {
+namespace h24s_15.Battle.Rolling.Actions {
     [Serializable]
     public struct ActionData : IActionData {
         [Tooltip("単発の攻撃の値")] [SerializeField]
