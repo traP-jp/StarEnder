@@ -20,7 +20,8 @@ namespace h24s_15.Battle.GUI {
             _hpSlider.maxValue = _playerCharacter.CurrentMaxHp.CurrentValue;
             _hpSlider.value = _playerCharacter.CurrentHp.CurrentValue;
 
-            _playerCharacter.CurrentHp.Subscribe(_ => { _hpSlider.value = _playerCharacter.CurrentHp.CurrentValue; })
+            _playerCharacter.CurrentHp.Subscribe(_ => { _hpSlider.value = _playerCharacter.CurrentHp.CurrentValue; }).AddTo(this);
+            _playerCharacter.CurrentMaxHp.Subscribe(_ => { _hpSlider.maxValue = _playerCharacter.CurrentMaxHp.CurrentValue; })
                 .AddTo(this);
         }
     }
