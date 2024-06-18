@@ -33,8 +33,6 @@ namespace h24s_15.Scenes.katsudon.katsudons.scripts {
                 Invoke(nameof(MigiMove), 1.0f);
 
                 await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
-
-                BuffSelectManager.Instance.ApplyBuffData(buffData);
             }
         }
 

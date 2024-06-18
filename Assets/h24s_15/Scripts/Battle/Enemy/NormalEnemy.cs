@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using h24s_15.Battle.Actions;
 using h24s_15.Battle.PlayerCharacter;
 using h24s_15.Battle.Rolling;
 using h24s_15.Battle.Rolling.Actions;

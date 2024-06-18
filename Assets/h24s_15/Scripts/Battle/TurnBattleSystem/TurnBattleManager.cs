@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using h24s_15.Battle.GUI;
 using h24s_15.Battle.Rolling;
 using h24s_15.Buff;
 using h24s_15.Utils;
@@ -12,10 +13,14 @@ using R3;
 
 namespace h24s_15.Battle.TurnBattleSystem {
     public class TurnBattleManager : SingletonMonoBehaviour<TurnBattleManager> {
+        [SerializeField] private TurnEndButton _turnEndButton;
+        [SerializeField] private DiceSetManager _diceSetManager;
         [SerializeField] private TurnBattleData _data;
         [SerializeField] private Image _overlayImage;
         [SerializeField] private TMP_Text _remainingTicketText;
 
+        private readonly Subject<Unit> _onTurnEnded = new();
+        public Observable<Unit> OnTurnEnded => _onTurnEnded;
         public TurnBattleData Data => _data;
 
         private bool _isTurnEnding = false;
@@ -32,11 +37,17 @@ namespace h24s_15.Battle.TurnBattleSystem {
                 _remainingTicketText.text = ticketCount.ToString().ToFullNumber();
             }).AddTo(this);
 
-            _data.RemainingOperateCount.Value = _data.ReRollOrSubmitTicketMaxCount;
+            _turnEndButton.OnClicked.Subscribe(_ => { OnTurnEnd().Forget(); }).AddTo(this);
+
+            _data.RemainingOperateCount
+                .Where(count => count <= 0)
+                .Subscribe(async _ => { await OnTurnEnd(); })
+                .AddTo(this);
         }
 
-        public async void OnTurnEnd() {
+        private async UniTask OnTurnEnd() {
             if (_isTurnEnding) {
+                Debug.LogError($"ターン遷移の途中でターンエンドをしようとしました");
                 return;
             }
 
@@ -67,7 +78,7 @@ namespace h24s_15.Battle.TurnBattleSystem {
             Debug.Log($"次のターンが始まりました");
             _isTurnEnding = false;
             _data.RemainingOperateCount.Value = _data.ReRollOrSubmitTicketMaxCount;
-            DiceSetManager.Instance.RollAll();
+            _onTurnEnded.OnNext(Unit.Default);
         }
 
         public async void OnDefeatEnemy() {

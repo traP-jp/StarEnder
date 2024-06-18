@@ -12,5 +12,6 @@ namespace h24s_15.Battle.Rolling.Actions {
 
         public IReadOnlyList<ActionTypes> GetActionTypes();
         public int GetActionValue(ActionTypes actionType);
+        public IActionData ApplyRoleInfo(Role role);
     }
 }

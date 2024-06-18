@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using h24s_15.Battle.Actions;
 using h24s_15.Battle.Enemy;
 using h24s_15.Battle.Rolling;
 using h24s_15.Battle.Rolling.Actions;
@@ -40,7 +39,7 @@ namespace h24s_15.Battle.PlayerCharacter {
 
         public async UniTask<bool> Act(CancellationToken token) {
             _nextAction.Value = RollResultToActionConverter.CompositeActionData(
-                DiceHistory.Instance.History.Select(x => x.ActionData).ToList());
+                DiceHistory.Instance.HistoryUnits.Select(x => x.ActionData).ToList());
             DiceHistory.Instance.ClearHistory();
             return await _nextActionTargetEnemy.Value.ReceiveAttack(_nextAction.Value, token);
         }

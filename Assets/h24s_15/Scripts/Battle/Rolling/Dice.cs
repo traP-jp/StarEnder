@@ -22,7 +22,7 @@ namespace h24s_15.Battle.Rolling {
         private RollEye _currentUpRollEye = RollEye.One;
         private RollProbsWeights _probsWeights;
 
-        public ReadOnlyReactiveProperty<bool> IsLocked => _isLocked.ToReadOnlyReactiveProperty();
+        public ReactiveProperty<bool> IsLocked => _isLocked;
         public RollEye CurrentUpRollEye => _currentUpRollEye;
 
         private void Awake() {
@@ -49,10 +49,6 @@ namespace h24s_15.Battle.Rolling {
             const RollEye defaultEye = RollEye.One;
             _currentUpRollEye = defaultEye;
             _diceImage.sprite = defaultEye.ToNormalSprite();
-        }
-
-        public void ToggleLock() {
-            _isLocked.Value = !_isLocked.Value;
         }
 
         private async UniTask PlayRollAnimationAsync(RollEye rolledEye) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace h24s_15.Battle.Rolling.Actions {
     [Serializable]
-    public struct ActionData : IActionData {
+    public record ActionData : IActionData {
         [Tooltip("単発の攻撃の値")] [SerializeField]
         private int _singleAttackValue;
 
@@ -71,6 +71,15 @@ namespace h24s_15.Battle.Rolling.Actions {
                 ActionTypes.Special => 0,
                 _ => 0
             };
+        }
+
+        public IActionData ApplyRoleInfo(Role role) {
+            var roleMultiplier = RoleInfoManager.Instance.CurrentRoleMultipliers.GetMultiplier(role);
+            _singleAttackValue *= roleMultiplier;
+            _singleShieldValue *= roleMultiplier;
+            _consecutiveAttackValue *= roleMultiplier;
+            _consecutiveShieldValue *= roleMultiplier;
+            return this;
         }
     }
 

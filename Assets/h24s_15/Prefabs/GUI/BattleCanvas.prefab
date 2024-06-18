@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b467c8808714aeda3a667abd2fea61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 6385448831010119359}
+  _button: {fileID: 2611583973566845720}
   _diffPosition: {x: 0, y: -1, z: 0}
   _diffRotation: {x: 0, y: 0, z: 0}
   _diffScale: {x: 0, y: 0, z: 0}
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87739f0a66449c19c666d05d6cb88a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DontDestroy: 0
+  _diceSubmitButton: {fileID: 203465823132405605}
   _headRollEyesSelector: {fileID: 4953196139207972189}
   _diceSet:
     _value:
@@ -1753,6 +1753,7 @@ GameObject:
   - component: {fileID: 3156619478581131282}
   - component: {fileID: 2688710490441589296}
   - component: {fileID: 5311849821775721160}
+  - component: {fileID: 54691126675403176}
   m_Layer: 5
   m_Name: TurnEndButton
   m_TagString: Untagged
@@ -1862,20 +1863,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2688710490441589296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: h24s_15.Battle.TurnBattleSystem.TurnBattleManager,
-          Assembly-CSharp
-        m_MethodName: OnTurnEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &54691126675403176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573961061199656844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeadea41f5143928845a48f77dea800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4577661893660543000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,6 +2172,7 @@ GameObject:
   - component: {fileID: 6361533918818736997}
   - component: {fileID: 5996762583799972864}
   - component: {fileID: 2611583973566845720}
+  - component: {fileID: 203465823132405605}
   m_Layer: 5
   m_Name: SubmitButton
   m_TagString: Untagged
@@ -2281,18 +2282,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7379691792075883179}
-        m_TargetAssemblyTypeName: h24s_15.Battle.Rolling.DiceSetManager, Assembly-CSharp
-        m_MethodName: SubmitThisSet
+      - m_Target: {fileID: 203465823132405605}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &203465823132405605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585007541407694470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d276baa711b740699c556fd751959078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7310745388926517535
 GameObject:
   m_ObjectHideFlags: 0

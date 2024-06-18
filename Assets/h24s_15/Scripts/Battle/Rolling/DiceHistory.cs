@@ -9,11 +9,11 @@ namespace h24s_15.Battle.Rolling {
         [SerializeField] private DiceHistoryUnit _unitPrefab;
         [SerializeField] private GameObject _contentParent;
 
-        private readonly List<DiceResultUnit> _history = new();
-        private readonly List<DiceHistoryUnit> _units = new();
+        private readonly List<DiceResultUnit> _historyUnits = new();
+        private readonly List<DiceHistoryUnit> _unitObjects = new();
 
-        public IReadOnlyList<DiceResultUnit> History => _history;
-        public IReadOnlyList<DiceHistoryUnit> Units => _units;
+        public IReadOnlyList<DiceResultUnit> HistoryUnits => _historyUnits;
+        public IReadOnlyList<DiceHistoryUnit> UnitObjects => _unitObjects;
 
         protected override void Awake() {
             base.Awake();
@@ -26,11 +26,11 @@ namespace h24s_15.Battle.Rolling {
         }
 
         public void AddHistory(DiceResultUnit result) {
-            _history.Add(result);
+            _historyUnits.Add(result);
 
             var unit = Instantiate(_unitPrefab, _contentParent.transform);
             unit.Initialize(result);
-            _units.Add(unit);
+            _unitObjects.Add(unit);
 
             Debug.Log($"History added: {result.Role}");
         }
@@ -40,7 +40,7 @@ namespace h24s_15.Battle.Rolling {
                 Destroy(child.gameObject);
             }
 
-            _history.Clear();
+            _historyUnits.Clear();
         }
     }
 }

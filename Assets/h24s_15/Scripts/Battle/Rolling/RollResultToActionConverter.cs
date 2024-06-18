@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using h24s_15.Battle.Rolling;
 using h24s_15.Battle.Rolling.Actions;
 using h24s_15.Utils;
 using UnityEngine;
 
-namespace h24s_15.Battle.Actions {
+namespace h24s_15.Battle.Rolling {
     public class RollResultToActionConverter : SingletonMonoBehaviour<RollResultToActionConverter> {
         [SerializeField] private List<ActionData> _rollEyeActionDataList;
 
@@ -12,7 +11,7 @@ namespace h24s_15.Battle.Actions {
             return _rollEyeActionDataList[(int)rollEye - 1];
         }
 
-        public static ActionData CompositeActionData(List<IActionData> dataList) {
+        public static IActionData CompositeActionData(List<IActionData> dataList) {
             var singleAttackValue = 0;
             var singleShieldValue = 0;
             var consecutiveAttackValue = 0;

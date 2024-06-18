@@ -279,6 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontDestroy: 0
+  _turnEndButton: {fileID: 0}
+  _diceSetManager: {fileID: 0}
   _data:
     _reRollOrSubmitTicketMaxCount: 4
     DiceHistory: {fileID: 988945551215583141}
@@ -387,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontDestroy: 0
-  CurrentRoleMultipliers:
+  _currentRoleMultipliers:
     _noPairMultiplier: 1
     _onePairMultiplier: 2
     _twoPairMultiplier: 3

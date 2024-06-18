@@ -28,8 +28,6 @@ namespace h24s_15.Scenes.katsudon.katsudons.scripts {
                 NextKanri.downmove(GameObject.Find("Button3"));
                 gameObject.transform.localScale = Vector3.one;
                 Invoke(nameof(MigiMove), 1.0f);
-
-                BuffSelectManager.Instance.ApplyBuffData(buffData);
             }
         }
 
