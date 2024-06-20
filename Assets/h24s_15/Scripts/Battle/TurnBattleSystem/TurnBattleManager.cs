@@ -107,6 +107,8 @@ namespace h24s_15.Battle.TurnBattleSystem {
             _overlayImage.enabled = true;
             Debug.Log("やられた！");
             _overlayImage.DOFade(1.0f, 1.0f);
+            ProgressManager.resetProgress();
+            ProgressManager.toStageSelect();
         }
     }
 }
