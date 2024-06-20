@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/h24s_15/Scenes/_Formal/Battle.unity
     guid: a218b33c1094121458f3ae3f3fadc1d6
+  - enabled: 1
+    path: Assets/h24s_15/Scenes/Au/AuStageSelect.unity
+    guid: 3829e9c819d423c43bfeb7a40d35edec
+  - enabled: 1
+    path: Assets/h24s_15/Scenes/Au/AuBattle.unity
+    guid: 6ea29870e1b2cbc4a833076c4d0f5e48
   m_configObjects: {}
