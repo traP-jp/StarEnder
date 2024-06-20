@@ -21,7 +21,6 @@ namespace h24s_15.Buff {
 
         protected override void Awake() {
             base.Awake();
-
             _buffDataList = GetComponentsInChildren<BuffData>().ToList();
             var probWeights = _buffDataList.Select(data => data.ProbWeight).ToArray();
             _buffGacha.Constructor(probWeights);
@@ -55,6 +54,7 @@ namespace h24s_15.Buff {
                     SceneManager.LoadScene("StageSelect");
                 })
                 .SetLink(_overLayImage.gameObject);
+            BackToStageSelect();
         }
 
         public void DisplayBuffSelect() {
@@ -70,7 +70,10 @@ namespace h24s_15.Buff {
             }
         }
 
-        public async void BackToStageSelect() { }
+        public async void BackToStageSelect() { 
+            ProgressManager.increaseCurrentStage();
+            ProgressManager.toStageSelect();
+        }
 
         private BuffData GetRandomBuffData() {
             var index = _buffGacha.Roll();
