@@ -26,12 +26,15 @@ namespace h24s_15.Battle.Enemy {
         private ReactiveProperty<int> _currentShield = new();
         private ReactiveProperty<IActionData> _nextAction = new();
         private ReactiveProperty<IPlayerCharacter> _nextActionTargetPlayerCharacter = new();
+        private readonly ReactiveProperty<bool> _isDefeated = new(false);
 
         public ReadOnlyReactiveProperty<int> CurrentMaxHp => _currentMaxHp.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<int> CurrentHp => _currentHp.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<int> CurrentShield => _currentShield.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<IActionData> NextAction => _nextAction.ToReadOnlyReactiveProperty();
+        public Observable<Unit> OnDefeated => _isDefeated.Where(x => x).AsUnitObservable();
         public ReactiveProperty<IPlayerCharacter> NextActionTargetPlayerCharacter => _nextActionTargetPlayerCharacter;
+        public ReadOnlyReactiveProperty<bool> IsDefeated => _isDefeated.ToReadOnlyReactiveProperty();
 
         private void Awake() {
             _actionGacha.Constructor(_actionWithWeights.Select(x => x.Weight).ToArray());
@@ -41,8 +44,6 @@ namespace h24s_15.Battle.Enemy {
         }
 
         private void Start() {
-            TurnBattleManager.Instance.Data.CurrentEnemies.Add(this);
-
             _nextActionTargetPlayerCharacter.Value = FindObjectsByType<GameObject>(FindObjectsSortMode.None)
                 .First(obj => obj.GetComponent<IPlayerCharacter>() != null).GetComponent<IPlayerCharacter>();
         }
@@ -66,7 +67,7 @@ namespace h24s_15.Battle.Enemy {
 
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: token);
 
-                TurnBattleManager.Instance.OnDefeatEnemy();
+                _isDefeated.Value = true;
                 return true;
             }
             else {

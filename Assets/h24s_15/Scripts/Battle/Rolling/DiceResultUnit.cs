@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using h24s_15.Battle.Rolling.Actions;
+using UnityEngine;
 
 namespace h24s_15.Battle.Rolling {
     public record DiceResultUnit {
@@ -9,25 +11,15 @@ namespace h24s_15.Battle.Rolling {
 
         private IActionData _actionData;
 
-        public IActionData ActionData {
-            get {
-                if (_actionData == null) {
-                    _actionData = ComputeActionData();
-                }
-
-                return _actionData;
-            }
-        }
+        public IActionData ActionData => _actionData ??= ComputeActionData();
 
         private IActionData ComputeActionData() {
             // アクションデータ.
-            var actionDatList = new List<IActionData>();
-            foreach (var headEye in HeadEyes) {
-                var thisActionData = RollResultToActionConverter.Instance.GetActionData(headEye).ApplyRoleInfo(Role);
-                actionDatList.Add(thisActionData);
-            }
+            var actionDatList = HeadEyes.Select(headEye =>
+                RollResultToActionConverter.Instance.GetClonedActionData(headEye).ApplyRoleMultiplier(Role)).ToList();
 
             var resultActionData = RollResultToActionConverter.CompositeActionData(actionDatList);
+
             return resultActionData;
         }
 

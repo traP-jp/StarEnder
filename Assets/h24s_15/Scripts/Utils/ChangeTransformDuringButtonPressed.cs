@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -27,9 +24,7 @@ namespace h24s_15.Utils {
             _initialPosition = transform.localPosition;
             _initialRotation = transform.localEulerAngles;
             _initialScale = transform.localScale;
-        }
 
-        private void Start() {
             if (!_existsButton) {
                 return;
             }
@@ -38,27 +33,29 @@ namespace h24s_15.Utils {
             var trigger = _button.gameObject.AddComponent<EventTrigger>();
 
             // ボタンが押されたときのイベントを設定
-            var pointerDownEntry = new EventTrigger.Entry();
-            pointerDownEntry.eventID = EventTriggerType.PointerDown;
+            var pointerDownEntry = new EventTrigger.Entry {
+                eventID = EventTriggerType.PointerDown
+            };
             pointerDownEntry.callback.AddListener((data) => { OnPointerDown((PointerEventData)data); });
             trigger.triggers.Add(pointerDownEntry);
 
             // ボタンが離されたときのイベントを設定
-            var pointerUpEntry = new EventTrigger.Entry();
-            pointerUpEntry.eventID = EventTriggerType.PointerUp;
+            var pointerUpEntry = new EventTrigger.Entry {
+                eventID = EventTriggerType.PointerUp
+            };
             pointerUpEntry.callback.AddListener((data) => { OnPointerUp((PointerEventData)data); });
             trigger.triggers.Add(pointerUpEntry);
         }
 
         // ボタンが押されたときに呼ばれる
-        public void OnPointerDown(PointerEventData data) {
-            if (_existsButton) {
+        private void OnPointerDown(PointerEventData data) {
+            if (_existsButton && _button.interactable) {
                 ApplyForTransform();
             }
         }
 
         // ボタンが離されたときに呼ばれる
-        public void OnPointerUp(PointerEventData data) {
+        private void OnPointerUp(PointerEventData data) {
             if (_existsButton) {
                 ResetForTransform();
             }

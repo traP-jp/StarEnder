@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace h24s_15.Battle.Rolling {
@@ -28,7 +29,7 @@ namespace h24s_15.Battle.Rolling {
             AssignProbWeightsToAll();
 
             foreach (var value in _value.Where(value => !value.IsLocked.CurrentValue)) {
-                value.RollDice();
+                value.RollRandomDice();
             }
 
             var result = _value.Select(dice => dice.CurrentUpRollEye).ToList();

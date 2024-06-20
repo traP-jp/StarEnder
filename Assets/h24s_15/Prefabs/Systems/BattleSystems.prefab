@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DontDestroy: 0
-  _currentRoleMultipliers:
+  _initialRoleMultiplier:
     _noPairMultiplier: 1
     _onePairMultiplier: 2
     _twoPairMultiplier: 3
@@ -399,3 +399,13 @@ MonoBehaviour:
     _bStraightMultiplier: 7
     _fourDiceMultiplier: 8
     _fiveDiceMultiplier: 9
+  _currentRoleMultiplier:
+    _noPairMultiplier: 0
+    _onePairMultiplier: 0
+    _twoPairMultiplier: 0
+    _threeDiceMultiplier: 0
+    _fullHouseMultiplier: 0
+    _sStraightMultiplier: 0
+    _bStraightMultiplier: 0
+    _fourDiceMultiplier: 0
+    _fiveDiceMultiplier: 0

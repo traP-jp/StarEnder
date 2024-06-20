@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using h24s_15.Battle.Enemy;
 using h24s_15.Battle.GUI;
+using h24s_15.Battle.GUI.Buttons;
+using h24s_15.Battle.PlayerCharacter;
 using h24s_15.Battle.Rolling;
 using h24s_15.Buff;
 using h24s_15.Utils;
@@ -10,6 +14,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using R3;
+using Object = UnityEngine.Object;
 
 namespace h24s_15.Battle.TurnBattleSystem {
     public class TurnBattleManager : SingletonMonoBehaviour<TurnBattleManager> {
@@ -29,6 +34,8 @@ namespace h24s_15.Battle.TurnBattleSystem {
             base.Awake();
 
             _overlayImage.enabled = false;
+            _data.CurrentPlayerCharacter = UnityObjectUtils.FindObjectByInterface<IPlayerCharacter>();
+            _data.CurrentEnemies = UnityObjectUtils.FindObjectsByInterface<IEnemy>().ToList();
         }
 
         private void Start() {
@@ -43,6 +50,15 @@ namespace h24s_15.Battle.TurnBattleSystem {
                 .Where(count => count <= 0)
                 .Subscribe(async _ => { await OnTurnEnd(); })
                 .AddTo(this);
+
+            _data.CurrentPlayerCharacter.OnDefeated.Subscribe(_ => { OnDefeated(); }).AddTo(this);
+
+            var onDefeatAllEnemy = _data.CurrentEnemies[0].OnDefeated;
+            for (var i = 1; i < _data.CurrentEnemies.Count; i++) {
+                onDefeatAllEnemy = onDefeatAllEnemy.Zip(_data.CurrentEnemies[0].OnDefeated, (x, y) => Unit.Default);
+            }
+
+            onDefeatAllEnemy.Subscribe(_ => { OnDefeatAllEnemy(); }).AddTo(this);
         }
 
         private async UniTask OnTurnEnd() {
@@ -81,7 +97,7 @@ namespace h24s_15.Battle.TurnBattleSystem {
             _onTurnEnded.OnNext(Unit.Default);
         }
 
-        public async void OnDefeatEnemy() {
+        public async void OnDefeatAllEnemy() {
             Debug.Log($"敵を倒した！");
             BuffSelectManager.Instance.DisplayBuffSelect();
         }

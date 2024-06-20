@@ -5,9 +5,10 @@ using Cysharp.Threading.Tasks;
 using h24s_15.Battle.Enemy;
 using h24s_15.Battle.Rolling;
 using h24s_15.Battle.Rolling.Actions;
-using h24s_15.Battle.TurnBattleSystem;
+using h24s_15.Utils.Extensions;
 using R3;
 using UnityEngine;
+using Unit = R3.Unit;
 
 namespace h24s_15.Battle.PlayerCharacter {
     public class PlayerCharacter : MonoBehaviour, IPlayerCharacter {
@@ -16,13 +17,13 @@ namespace h24s_15.Battle.PlayerCharacter {
         private ReactiveProperty<int> _currentMaxHp;
         private ReactiveProperty<int> _currentHp;
         private ReactiveProperty<int> _currentShield = new();
-        private ReactiveProperty<IActionData> _nextAction = new();
         private ReactiveProperty<IEnemy> _nextActionTargetEnemy = new();
+        private readonly Subject<Unit> _onDefeated = new();
 
         public ReadOnlyReactiveProperty<int> CurrentMaxHp => _currentMaxHp.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<int> CurrentHp => _currentHp.ToReadOnlyReactiveProperty();
         public ReadOnlyReactiveProperty<int> CurrentShield => _currentShield.ToReadOnlyReactiveProperty();
-        public ReadOnlyReactiveProperty<IActionData> NextAction => _nextAction.ToReadOnlyReactiveProperty();
+        public Observable<Unit> OnDefeated => _onDefeated;
         public ReactiveProperty<IEnemy> NextActionTargetEnemy => _nextActionTargetEnemy;
 
         private void Awake() {
@@ -31,17 +32,14 @@ namespace h24s_15.Battle.PlayerCharacter {
         }
 
         private void Start() {
-            TurnBattleManager.Instance.Data.CurrentPlayerCharacter = this;
-
-            _nextActionTargetEnemy.Value = FindObjectsByType<GameObject>(FindObjectsSortMode.None)
-                .First(obj => obj.GetComponent<IEnemy>() != null).GetComponent<IEnemy>();
+            _nextActionTargetEnemy.Value = UnityObjectUtils.FindObjectByInterface<IEnemy>();
         }
 
         public async UniTask<bool> Act(CancellationToken token) {
-            _nextAction.Value = RollResultToActionConverter.CompositeActionData(
+            var nextAction = RollResultToActionConverter.CompositeActionData(
                 DiceHistory.Instance.HistoryUnits.Select(x => x.ActionData).ToList());
             DiceHistory.Instance.ClearHistory();
-            return await _nextActionTargetEnemy.Value.ReceiveAttack(_nextAction.Value, token);
+            return await _nextActionTargetEnemy.Value.ReceiveAttack(nextAction, token);
         }
 
         public async UniTask<bool> ReceiveAttack(IActionData actionData, CancellationToken token) {
@@ -52,7 +50,7 @@ namespace h24s_15.Battle.PlayerCharacter {
 
             if (computedHp <= 0) {
                 _currentHp.Value = 0;
-                TurnBattleManager.Instance.OnDefeated();
+                _onDefeated.OnNext(Unit.Default);
                 return true;
             }
             else {

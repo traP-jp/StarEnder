@@ -4,17 +4,6 @@ using UnityEngine;
 namespace h24s_15.Battle.Rolling {
     [Serializable]
     public struct RoleMultipliers {
-        public static RoleMultipliers Default => new(
-            1,
-            2,
-            3,
-            5,
-            7,
-            9,
-            13,
-            17,
-            25);
-
         [SerializeField] private int _noPairMultiplier;
         [SerializeField] private int _onePairMultiplier;
         [SerializeField] private int _twoPairMultiplier;
@@ -40,28 +29,18 @@ namespace h24s_15.Battle.Rolling {
         }
 
         public int GetMultiplier(Role role) {
-            switch (role) {
-                case Role.NoPair:
-                    return _noPairMultiplier;
-                case Role.OnePair:
-                    return _onePairMultiplier;
-                case Role.TwoPair:
-                    return _twoPairMultiplier;
-                case Role.ThreeDice:
-                    return _threeDiceMultiplier;
-                case Role.FullHouse:
-                    return _fullHouseMultiplier;
-                case Role.SStraight:
-                    return _sStraightMultiplier;
-                case Role.BStraight:
-                    return _bStraightMultiplier;
-                case Role.FourDice:
-                    return _fourDiceMultiplier;
-                case Role.FiveDice:
-                    return _fiveDiceMultiplier;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(role), role, null);
-            }
+            return role switch {
+                Role.NoPair => _noPairMultiplier,
+                Role.OnePair => _onePairMultiplier,
+                Role.TwoPair => _twoPairMultiplier,
+                Role.ThreeDice => _threeDiceMultiplier,
+                Role.FullHouse => _fullHouseMultiplier,
+                Role.SStraight => _sStraightMultiplier,
+                Role.BStraight => _bStraightMultiplier,
+                Role.FourDice => _fourDiceMultiplier,
+                Role.FiveDice => _fiveDiceMultiplier,
+                _ => throw new ArgumentOutOfRangeException(nameof(role), role, null)
+            };
         }
     }
 }

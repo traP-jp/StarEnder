@@ -64,21 +64,37 @@ namespace h24s_15.Battle.Rolling.Actions {
             return actionTypes;
         }
 
-        public int GetActionValue(ActionTypes actionType) {
+        public int? GetActionValue(ActionTypes actionType) {
             return actionType switch {
                 ActionTypes.Attack => _singleAttackValue,
                 ActionTypes.Shield => _singleShieldValue,
-                ActionTypes.Special => 0,
-                _ => 0
+                ActionTypes.Special => null,
+                _ => null
             };
         }
 
-        public IActionData ApplyRoleInfo(Role role) {
-            var roleMultiplier = RoleInfoManager.Instance.CurrentRoleMultipliers.GetMultiplier(role);
+        public IActionData ApplyRoleMultiplier(Role role) {
+            var roleMultiplier = RoleMultiplierManager.Instance.InitialRoleMultiplier.GetMultiplier(role);
             _singleAttackValue *= roleMultiplier;
             _singleShieldValue *= roleMultiplier;
             _consecutiveAttackValue *= roleMultiplier;
             _consecutiveShieldValue *= roleMultiplier;
+            return this;
+        }
+
+        public IActionData Append(IActionData actionData) {
+            _singleAttackValue += actionData.SingleAttackValue;
+            _singleShieldValue += actionData.SingleShieldValue;
+            _consecutiveAttackValue += actionData.ConsecutiveAttackValue;
+            _consecutiveShieldValue += actionData.ConsecutiveShieldValue;
+            return this;
+        }
+
+        public IActionData Append(List<IActionData> actionDataList) {
+            foreach (var actionData in actionDataList) {
+                Append(actionData);
+            }
+
             return this;
         }
     }
@@ -99,7 +115,7 @@ namespace h24s_15.Battle.Rolling.Actions {
             return _actionData.GetActionTypes();
         }
 
-        public int GetActionValue(ActionTypes actionType) {
+        public int? GetActionValue(ActionTypes actionType) {
             return _actionData.GetActionValue(actionType);
         }
     }

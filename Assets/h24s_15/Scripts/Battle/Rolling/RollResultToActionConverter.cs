@@ -7,8 +7,13 @@ namespace h24s_15.Battle.Rolling {
     public class RollResultToActionConverter : SingletonMonoBehaviour<RollResultToActionConverter> {
         [SerializeField] private List<ActionData> _rollEyeActionDataList;
 
-        public IActionData GetActionData(RollEye rollEye) {
-            return _rollEyeActionDataList[(int)rollEye - 1];
+        public IActionData GetClonedActionData(RollEye rollEye) {
+            var originalData = _rollEyeActionDataList[(int)rollEye - 1];
+            var clonedData = new ActionData(originalData.SingleAttackValue, originalData.SingleShieldValue,
+                originalData.ConsecutiveAttackValue, originalData.ConsecutiveAttackTurns,
+                originalData.ConsecutiveShieldValue, originalData.ConsecutiveShieldTurns,
+                originalData.SingleSpecialEffect);
+            return clonedData;
         }
 
         public static IActionData CompositeActionData(List<IActionData> dataList) {

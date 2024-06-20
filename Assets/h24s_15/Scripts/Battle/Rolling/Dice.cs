@@ -38,9 +38,8 @@ namespace h24s_15.Battle.Rolling {
             _probsWeights = rollProbsWeights;
         }
 
-        public RollEye RollDice() {
+        public RollEye RollRandomDice() {
             var eye = _probsWeights.Roll();
-            PlayRollAnimationAsync(eye).Forget();
             _currentUpRollEye = eye;
             return eye;
         }
@@ -51,7 +50,7 @@ namespace h24s_15.Battle.Rolling {
             _diceImage.sprite = defaultEye.ToNormalSprite();
         }
 
-        private async UniTask PlayRollAnimationAsync(RollEye rolledEye) {
+        public async UniTask PlayRollAnimationAsync(RollEye rolledEye) {
             _animator.speed = _animationSpeed;
             _animator.enabled = true;
             await UniTask.Delay((int)(_rollingDurationSeconds * 1000));

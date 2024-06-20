@@ -11,7 +11,9 @@ namespace h24s_15.Battle.Rolling.Actions {
         public SpecialEffectTypes SingleSpecialEffect { get; }
 
         public IReadOnlyList<ActionTypes> GetActionTypes();
-        public int GetActionValue(ActionTypes actionType);
-        public IActionData ApplyRoleInfo(Role role);
+        public int? GetActionValue(ActionTypes actionType);
+        public IActionData ApplyRoleMultiplier(Role role);
+        public IActionData Append(IActionData actionData);
+        public IActionData Append(List<IActionData> actionDataList);
     }
 }

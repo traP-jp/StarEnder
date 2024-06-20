@@ -235,8 +235,9 @@ GameObject:
   - component: {fileID: 5039576474393853483}
   - component: {fileID: 4299387509311915150}
   - component: {fileID: 6385448831010119359}
+  - component: {fileID: 4566600534908631234}
   m_Layer: 5
-  m_Name: ReroleButton
+  m_Name: ReRollButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,19 +347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4299387509311915150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7379691792075883179}
-        m_TargetAssemblyTypeName: h24s_15.Battle.Rolling.Roller, Assembly-CSharp
-        m_MethodName: RollAll
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &4566600534908631234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585576572398348383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c09e3b77ba1d64f81305157a8334a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &623368266146891393
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -19.1}
+  m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1161263233773208709
@@ -1007,7 +1008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87739f0a66449c19c666d05d6cb88a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentRoleAndActionDisplay: {fileID: 6766128172394133074}
   _diceSubmitButton: {fileID: 203465823132405605}
+  _reRollButton: {fileID: 4566600534908631234}
   _headRollEyesSelector: {fileID: 4953196139207972189}
   _diceSet:
     _value:
@@ -2281,19 +2284,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5996762583799972864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 203465823132405605}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &203465823132405605
 MonoBehaviour:
   m_ObjectHideFlags: 0
